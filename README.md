@@ -21,7 +21,7 @@ cjs-to-es6 [ --verbose ] files/directories...
 Examples:
 
 ```
-cjs-to-es index.js              # convert a single file
+cjs-to-es6 index.js              # convert a single file
 cjs-to-es6 lib/                 # convert all files in a directory
 cjs-to-es6 foo.js bar.js lib/   # convert many files/directories
 ```
