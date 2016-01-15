@@ -16,24 +16,17 @@ Then:
 cjs-to-es6 [ --verbose ] files/directories...
 ```
 
-**Convert a single file:**
+Examples:
 
-    cjs-to-es6 index.js
-
-**Convert all files in a directory:**
-
-    cjs-to-es6 lib/
-
-**Convert many files/directories:**
-
-    cjs-to-es6 foo.js bar.js lib/
+```
+cjs-to-es index.js              # convert a single file
+cjs-to-es6 lib/                 # convert all files in a directory
+cjs-to-es6 foo.js bar.js lib/   # convert many files/directories
+```
 
 All files are modified in-place.
 
-Example input/output
-----
-
-**Input:**
+**Example input:**
 
 ```js
 var flimshaw = require('flimshaw');
