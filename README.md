@@ -28,7 +28,10 @@ cjs-to-es6 foo.js bar.js lib/   # convert many files/directories
 
 All files are modified in-place.
 
-**Example input:**
+Example input and output
+--------
+
+**In comes CommonJS:**
 
 ```js
 var flimshaw = require('flimshaw');
@@ -38,7 +41,7 @@ exports.flubTheDub = 'flubTheDub';
 module.exports = 'zings';
 ```
 
-**Output:**
+**Out goes ES6 modules:**
 
 ```js
 import flimshaw from 'flimshaw';
