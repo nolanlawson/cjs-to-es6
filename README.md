@@ -1,7 +1,7 @@
 cjs-to-es6
 ======
 
-CLI to convert JavaScript files from CommonJS to ES6 modules (aka ES2015 modules, aka JavaScript modules, aka `import`/`export` instead of `require`/`module.exports`), using [5to6-codemod](https://github.com/5to6/5to6-codemod).
+CLI tool to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 modules](http://exploringjs.com/es6/ch_modules.html) (aka ES2015 modules, aka JavaScript modules, aka hipster `require()`). Uses [5to6-codemod](https://github.com/5to6/5to6-codemod).
 
 Usage
 ---
@@ -20,15 +20,38 @@ cjs-to-es6 [ --verbose ] files/directories...
 
     cjs-to-es6 index.js
 
-**Convert many files:**
-
-    cjs-to-es6 foo.js bar.js baz.js
-
 **Convert all files in a directory:**
 
     cjs-to-es6 lib/
-    
-The files are modified in-place.
+
+**Convert many files/directories:**
+
+    cjs-to-es6 foo.js bar.js lib/
+
+All files are modified in-place.
+
+Example input/output
+----
+
+**Input:**
+
+```js
+var flimshaw = require('flimshaw');
+var twentyEightSkidoo = require('twenty-eight').skidoo;
+
+exports.flubTheDub = 'flubTheDub';
+module.exports = 'zings';
+```
+
+**Output:**
+
+```js
+import flimshaw from 'flimshaw';
+import {skidoo as twentyEightSkidoo} from 'twenty-eight';
+
+export let flubTheDub = 'flubTheDub';
+export default 'zings';
+```
 
 Migrating from CommonJS to ES6 modules
 --------
