@@ -6,11 +6,13 @@ CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES
 Usage
 ---
 
+Install it:
+
 ```
 npm install -g cjs-to-es6
 ```
 
-Then:
+Then run it:
 
 ```
 cjs-to-es6 [ --verbose ] files/directories...
