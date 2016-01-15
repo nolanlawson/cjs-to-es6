@@ -54,8 +54,8 @@ export default 'zings';
 Migrating from CommonJS to ES6 modules
 --------
 
-Not all CommonJS usages have a 1-to-1 equivalent in ES6 modules.
-So you may have to correct some errors manually.
+Not all uses of CommonJS have a 1-to-1 equivalent in ES6 modules.
+So you might have to correct some errors manually.
 
 Use `--verbose` to get detailed output, or follow these general tips:
 
@@ -78,7 +78,7 @@ var result = clownShoes ? new Clown() : new RespectableGentleman();
 export default result;
 ```
 
-### `import`s also must be at the top level
+### `import`s also have to be at the top level
 
 This is invalid:
 
