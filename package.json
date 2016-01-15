@@ -1,0 +1,21 @@
+{
+  "name": "cjs-to-es6",
+  "version": "1.0.0",
+  "description": "Convert JavaScript files from CommonJS to ES6 modules",
+  "main": "index.js",
+  "bin": "index.js",
+  "keywords": [
+    "es6",
+    "es2015",
+    "commonjs",
+    "cjs",
+    "convert"
+  ],
+  "author": "Nolan Lawson <nolan@nolanlawson.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "5to6-codemod": "^1.0.0",
+    "findit": "^2.0.0",
+    "jscodeshift": "^0.3.12"
+  }
+}
