@@ -1,7 +1,9 @@
 cjs-to-es6
 ======
 
-CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 modules](http://exploringjs.com/es6/ch_modules.html) (aka ES2015 modules, aka JavaScript modules, aka hipster `require()`). Uses [5to6-codemod](https://github.com/5to6/5to6-codemod) under the hood.
+CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 modules](http://exploringjs.com/es6/ch_modules.html) (aka ES2015 modules, aka JavaScript modules, aka hipster `require()`). 
+
+This tool uses [5to6-codemod](https://github.com/5to6/5to6-codemod) under the hood. It's basically just a thin convenience wrapper, which can process multiple files and convert both `import`s and `export`s.
 
 Usage
 ---
