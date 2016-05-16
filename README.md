@@ -88,7 +88,7 @@ This is invalid:
 
 ```js
 try {
-  import MysterModule from 'mystery-module';
+  import MysteryModule from 'mystery-module';
 } catch (err) {
   console.log("It's a mystery!");
 }
