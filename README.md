@@ -5,6 +5,8 @@ CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES
 
 This tool uses [5to6-codemod](https://github.com/5to6/5to6-codemod) under the hood. It's basically just a thin convenience wrapper, which can process multiple files and convert both `import`s and `export`s.
 
+Note that the process isn't foolproof, so you may have to manually tweak some things. But it can usually get you ~95% of the way there.
+
 Usage
 ---
 
