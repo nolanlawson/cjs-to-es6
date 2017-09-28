@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-var lie = require('lie');
 if (typeof Promise === 'undefined') {
+  var lie = require('lie');
   global.Promise = lie;
 }
 var denodeify = require('denodeify');
