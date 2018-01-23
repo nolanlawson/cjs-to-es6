@@ -22,6 +22,10 @@ var yargs = require('yargs')
   .boolean('verbose')
   .describe('verbose', 'show verbose output')
   .default('verbose', false)
+  .alias('p', 'parser')
+  .describe('p', 'choose the parser that should be used with jscodeshift')
+  .choices('p', ['babel', 'babylon', 'flow'])
+  .default('p', 'babel')
   .example('$0 index.js', 'convert a single file')
   .example('$0 lib/', 'convert all files in a directory')
   .example('$0 foo.js bar.js lib/', 'convert many files/directories')
@@ -54,7 +58,7 @@ function findJsFiles(dir) {
 function runCodeshift(transformName, files) {
   var cmd = require.resolve("jscodeshift/bin/jscodeshift.sh");
   var transform = require.resolve('5to6-codemod/transforms/' + transformName);
-  var child = spawn(cmd, ["-t", transform].concat(files));
+  var child = spawn(cmd, ["--parser", yargs.argv.parser, "-t", transform].concat(files));
   child.progress(function (childProcess) {
     if (verbose) {
       childProcess.stdout.pipe(process.stdout);
