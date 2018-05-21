@@ -1,6 +1,6 @@
 {
   "name": "cjs-to-es6",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Convert JavaScript files from CommonJS to ES6 modules",
   "repository": "https://github.com/nolanlawson/cjs-to-es6.git",
   "main": "index.js",
@@ -26,6 +26,5 @@
     "uniq": "^1.0.1",
     "yargs": "^3.31.0"
   },
-  "files": [
-  ]
+  "files": []
 }
