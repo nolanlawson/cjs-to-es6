@@ -16,7 +16,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "5to6-codemod": "^1.0.0",
-    "child-process-promise": "^1.1.0",
+    "child-process-promise": "^2.2.1",
     "colors": "^1.1.2",
     "denodeify": "^1.2.1",
     "findit": "^2.0.0",
