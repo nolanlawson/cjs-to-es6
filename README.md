@@ -1,4 +1,4 @@
-cjs-to-es6
+cjs-to-es6 (UNMAINTAINED)
 ======
 
 CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 modules](http://exploringjs.com/es6/ch_modules.html) (aka ES2015 modules, aka JavaScript modules, aka hipster `require()`). 
