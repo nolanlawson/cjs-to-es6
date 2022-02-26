@@ -1,97 +1,38 @@
-cjs-to-es6 (UNMAINTAINED)
-======
+# cjs-to-es6
 
-CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 modules](http://exploringjs.com/es6/ch_modules.html) (aka ES2015 modules, aka JavaScript modules, aka hipster `require()`). 
+CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 / ES2015+](http://exploringjs.com/es6/ch_modules.html) format. The process isn't foolproof, but it can usually get you ~95% of the way there.
 
-This tool uses [5to6-codemod](https://github.com/5to6/5to6-codemod) under the hood. It's basically just a thin convenience wrapper, which can process multiple files and convert both `import`s and `export`s.
+This tool uses [jscodeshift](https://github.com/facebook/jscodeshift) to run [5to6-codemod](https://github.com/5to6/5to6-codemod), [js-codemod](https://github.com/cpojer/js-codemod/) and [js-import-sort](https://github.com/Amwam/js-import-sort) under the hood. It's an opinionated migration to a format suitable for use in ES2015+ programs & scripts.
 
-Note that the process isn't foolproof, so you may have to manually tweak some things. But it can usually get you ~95% of the way there. See [migrating](#migrating-from-commonjs-to-es6-modules) below for some tips.
+For extra safety, please consider using [standard](https://standardjs.com/) to sanitize your code.
 
-Usage
----
+## Install
 
-Install it:
+### Install it locally (without npm / yarn)
 
+```code
+git clone (this repo)
+(npm -g install / yarn global add) ./cjs-to-es6
 ```
-npm install -g cjs-to-es6
+
+### Install it from package
+
+```bash
+(npm install / yarn add) -g cjs-to-es6
 ```
 
-Then run it:
+## Usage
 
-```
+```bash
 cjs-to-es6 [ --verbose ] files/directories...
 ```
 
+All files are modified in-place. You may want to review & rename them to the **.mjs** extension, if using [Node 14 or later](https://nodejs.org/docs/latest-v14.x/api/esm.html). Un-converted files should use the **.cjs** extension.
+
 Examples:
 
-```
+```code
 cjs-to-es6 index.js             # convert a single file
-cjs-to-es6 lib/                 # convert all files in a directory
+cjs-to-es6 lib/                 # convert all files in a directory & its subdirectories (.js & .cjs)
 cjs-to-es6 foo.js bar.js lib/   # convert many files/directories
 ```
-
-All files are modified in-place.
-
-Example input and output
---------
-
-**In comes CommonJS:**
-
-```js
-var flimshaw = require('flimshaw');
-var twentyEightSkidoo = require('twenty-eight').skidoo;
-
-exports.flubTheDub = 'flubTheDub';
-module.exports = 'zings';
-```
-
-**Out goes ES6 modules:**
-
-```js
-import flimshaw from 'flimshaw';
-import {skidoo as twentyEightSkidoo} from 'twenty-eight';
-
-export let flubTheDub = 'flubTheDub';
-export default 'zings';
-```
-
-Migrating from CommonJS to ES6 modules
---------
-
-Not all uses of CommonJS have a 1-to-1 equivalent in ES6 modules.
-So you might have to correct some errors manually.
-
-Use `--verbose` to get detailed output, or follow these general tips:
-
-### `export`s must be at the top level
-
-This is invalid:
-
-```js
-if (clownShoes) {
-  export default new Clown();
-} else {
-  export default new RespectableGentleman();
-}
-```
-
-Instead do:
-
-```js
-var result = clownShoes ? new Clown() : new RespectableGentleman();
-export default result;
-```
-
-### `import`s also have to be at the top level
-
-This is invalid:
-
-```js
-try {
-  import MysteryModule from 'mystery-module';
-} catch (err) {
-  console.log("It's a mystery!");
-}
-```
-
-There is no equivalent for this `try`/`catch` pattern in ES6 modules.

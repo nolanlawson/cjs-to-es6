@@ -1,1 +1,4 @@
 node_modules
+.vs
+package-lock.json
+yarn-error.log
