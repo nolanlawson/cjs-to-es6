@@ -27,5 +27,10 @@
     "readdirp": "^3.6.0",
     "yargs": "^3.31.0"
   },
+  "resolutions": {
+    "5to6-codemod": "https://github.com/5to6/5to6-codemod",
+    "js-codemod": "https://github.com/cpojer/js-codemod/",
+    "js-import-sort": "https://github.com/Amwam/js-import-sort"
+  },
   "files": []
 }
