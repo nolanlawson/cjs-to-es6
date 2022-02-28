@@ -71,10 +71,14 @@ async function codeSwitching (files) {
   console.log(`Transforming ${colors.yellow('require()')} to ${colors.cyan('import')} ...`)
   await runCodeshift('5to6-codemod/transforms/cjs.js', files)
 
+  // Sort imports
+  console.log(colors.magenta('\nSorting imports...\n'))
+  await runCodeshift('js-import-sort/index.js', files)  
+
   // module.exports -> Export
   console.log(`Transforming ${colors.yellow('module.exports')}/${colors.red('exports')} to ${colors.cyan('export')} ...`)
   await runCodeshift('5to6-codemod/transforms/exports.js', files)
-
+  
   // Safe function to arrow conversion
   console.log(`Transforming (safely) ${colors.yellow('function ()')} to ${colors.cyan('() =>')} ...`)
   await runCodeshift('js-codemod/transforms/arrow-function.js', files)
