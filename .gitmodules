@@ -1,9 +1,0 @@
-[submodule "js-codemod"]
-	path = js-codemod
-	url = https://github.com/cpojer/js-codemod.git
-[submodule "5to6-codemod"]
-	path = 5to6-codemod
-	url = https://github.com/5to6/5to6-codemod.git
-[submodule "js-import-sort"]
-	path = js-import-sort
-	url = https://github.com/Amwam/js-import-sort.git

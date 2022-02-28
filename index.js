@@ -45,7 +45,7 @@ if (argv.h || !yargs) {
 function runCodeshift (transformName, files) {
   try {
     const cmd = require.resolve('jscodeshift/bin/jscodeshift.sh')
-    const transform = path.resolve(`${process.cwd()}/${transformName}`)
+    const transform = require.resolve(transformName)
     const child = spawn(cmd, ['-c', os.cpus.length, '--parser', argv.p, '-t', transform].concat(files))
     child.progress((childProcess) => {
       if (yargs.v) {
