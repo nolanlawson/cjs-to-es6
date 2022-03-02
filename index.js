@@ -45,7 +45,7 @@ if (argv.h || !yargs) {
 function runCodeshift (transformName, files) {
   try {
     const cmd = require.resolve('jscodeshift/bin/jscodeshift.sh')
-    const transform = path.resolve(`${process.cwd()}/${transformName}`)
+    const transform = require.resolve(transformName)
     const child = spawn(cmd, ['-c', os.cpus.length, '--parser', argv.p, '-t', transform].concat(files))
     child.progress((childProcess) => {
       if (yargs.v) {
@@ -81,27 +81,27 @@ async function codeSwitching (files) {
   
   // Safe function to arrow conversion
   console.log(`Transforming (safely) ${colors.yellow('function ()')} to ${colors.cyan('() =>')} ...`)
-  await runCodeshift('js-codemod/transforms/arrow-function.js', files)
+  await runCodeshift('next-js-codemod/transforms/arrow-function.js', files)
 
   // Use const & let
   console.log(`Transforming ${colors.yellow('var')} to ${colors.red('const')} or ${colors.cyan('let')} ...`)
-  await runCodeshift('js-codemod/transforms/no-vars.js', files)
+  await runCodeshift('next-js-codemod/transforms/no-vars.js', files)
 
   // Implement ES2015+ object shorthand
   console.log(colors.magenta('\nImplementing object shorthand...\n'))
-  await runCodeshift('js-codemod/transforms/rm-object-assign.js', files)
+  await runCodeshift('next-js-codemod/transforms/rm-object-assign.js', files)
 
   // Fix quoted properties
   console.log(colors.magenta('\nFixing quoted properties...\n'))
-  await runCodeshift('js-codemod/transforms/unquote-properties.js', files)
+  await runCodeshift('next-js-codemod/transforms/unquote-properties.js', files)
 
   // Update computed properties
   console.log(colors.magenta('\nUpdating computed properties...\n'))
-  await runCodeshift('js-codemod/transforms/updated-computed-props.js', files)
+  await runCodeshift('next-js-codemod/transforms/updated-computed-props.js', files)
 
   // Convert lodash & underscore functions to ES2015+ native functions
   console.log(colors.magenta('\nConvert lodash & underscore to ES2015+ functions...\n'))
-  await runCodeshift('js-codemod/transforms/underscore-to-lodash-native.js', files)
+  await runCodeshift('next-js-codemod/transforms/underscore-to-lodash-native.js', files)
 }
 
 Promise.resolve().then(async () => {
