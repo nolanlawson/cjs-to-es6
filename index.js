@@ -41,7 +41,7 @@ function runCodeshift (transformName, files) {
     const transform = require.resolve(transformName)
     const child = spawn(cmd, ['-c', os.cpus.length, '--parser', argv.p, '-t', transform].concat(files))
     child.progress((childProcess) => {
-      if (yargs.v) {
+      if (argv.v) {
         childProcess.stdout.pipe(process.stdout)
       } else {
         childProcess.stdout.on('data', (data) => {
@@ -63,10 +63,6 @@ async function codeSwitching (files) {
   // Require -> Import
   console.log(`Transforming ${colors.yellow('require()')} to ${colors.cyan('import')} ...`)
   await runCodeshift('5to6-codemod/transforms/cjs.js', files)
-
-  // Sort imports
-  console.log(colors.magenta('\nSorting imports...\n'))
-  await runCodeshift('js-import-sort/index.js', files)
 
   // module.exports -> Export
   console.log(`Transforming ${colors.yellow('module.exports')}/${colors.red('exports')} to ${colors.cyan('export')} ...`)
