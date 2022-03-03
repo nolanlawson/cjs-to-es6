@@ -2,10 +2,13 @@
   "name": "cjs-to-es6",
   "version": "2.0.0",
   "description": "Convert JavaScript files from CommonJS to ES6 modules",
-  "repository": "https://github.com/nolanlawson/cjs-to-es6.git",
   "license": "Apache-2.0",
   "main": "index.js",
+  "author": "Nolan Lawson <nolan@nolanlawson.com>",
   "bin": "index.js",
+  "scripts": {
+    "lint": "standard"
+  },
   "keywords": [
     "es6",
     "es2015",
@@ -27,10 +30,24 @@
     "fs-extra": "^10.0.1",
     "js-import-sort": "^2.0.3",
     "jscodeshift": "^0.13.1",
-    "lodash": "^4.17.21",
     "next-js-codemod": "^1.0.2",
     "readdirp": "^3.6.0",
-    "yargs": "^3.31.0"
+    "yargs": "^17.3.1"
   },
-  "files": []
+  "devDependencies": {
+    "standard": "^16.0.4"
+  },
+  "files": [],
+  "volta": {
+    "node": "16.14.0",
+    "yarn": "1.22.17"
+  },
+  "bugs": {
+    "url": "https://github.com/nolanlawson/cjs-to-es6/issues"
+  },
+  "homepage": "https://github.com/nolanlawson/cjs-to-es6#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nolanlawson/cjs-to-es6.git"
+  }
 }

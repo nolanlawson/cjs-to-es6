@@ -7,22 +7,16 @@ const readdirp = require('readdirp')
 const spawn = require('child-process-promise').spawn
 const yargs = require('yargs')
   .options({
-    h: {
-      type: 'boolean',
-      alias: ['h', 'help'],
-      describe: 'show help message',
-      default: false
-    },
     v: {
       type: 'boolean',
-      alias: ['v', 'verbose'],
+      alias: ['verbose'],
       describe: 'show verbose output',
       default: false
     },
     p: {
-      alias: ['p', 'parser'],
+      alias: ['parser'],
       type: 'string',
-      describe: 'choose the parser that should be used with jscodeshift',
+      describe: 'the parser that should be used with jscodeshift',
       choices: ['babel', 'babylon', 'flow', 'ts', 'tsx'],
       default: 'babel'
     }
@@ -36,8 +30,7 @@ const yargs = require('yargs')
 const argv = yargs.argv
 const filesToProcess = argv._
 
-if (argv.h || !yargs) {
-  console.log(`\ncjs-to-es6 v${require('./package.json').version}: ${require('./package.json').description}\n`)
+if (!filesToProcess.length) {
   yargs.showHelp()
   process.exit(0)
 }
@@ -73,35 +66,11 @@ async function codeSwitching (files) {
 
   // Sort imports
   console.log(colors.magenta('\nSorting imports...\n'))
-  await runCodeshift('js-import-sort/index.js', files)  
+  await runCodeshift('js-import-sort/index.js', files)
 
   // module.exports -> Export
   console.log(`Transforming ${colors.yellow('module.exports')}/${colors.red('exports')} to ${colors.cyan('export')} ...`)
   await runCodeshift('5to6-codemod/transforms/exports.js', files)
-  
-  // Safe function to arrow conversion
-  console.log(`Transforming (safely) ${colors.yellow('function ()')} to ${colors.cyan('() =>')} ...`)
-  await runCodeshift('next-js-codemod/transforms/arrow-function.js', files)
-
-  // Use const & let
-  console.log(`Transforming ${colors.yellow('var')} to ${colors.red('const')} or ${colors.cyan('let')} ...`)
-  await runCodeshift('next-js-codemod/transforms/no-vars.js', files)
-
-  // Implement ES2015+ object shorthand
-  console.log(colors.magenta('\nImplementing object shorthand...\n'))
-  await runCodeshift('next-js-codemod/transforms/rm-object-assign.js', files)
-
-  // Fix quoted properties
-  console.log(colors.magenta('\nFixing quoted properties...\n'))
-  await runCodeshift('next-js-codemod/transforms/unquote-properties.js', files)
-
-  // Update computed properties
-  console.log(colors.magenta('\nUpdating computed properties...\n'))
-  await runCodeshift('next-js-codemod/transforms/updated-computed-props.js', files)
-
-  // Convert lodash & underscore functions to ES2015+ native functions
-  console.log(colors.magenta('\nConvert lodash & underscore to ES2015+ functions...\n'))
-  await runCodeshift('next-js-codemod/transforms/underscore-to-lodash-native.js', files)
 }
 
 Promise.resolve().then(async () => {
@@ -112,8 +81,7 @@ Promise.resolve().then(async () => {
       for await (const entry of readdirp(item, { fileFilter: ['*.js', '*.cjs'] })) {
         filesToLoad.push(entry.fullPath)
       }
-    }
-    catch {
+    } catch {
       filesToLoad.push(path.resolve(item))
     }
   }

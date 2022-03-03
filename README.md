@@ -1,6 +1,6 @@
 # cjs-to-es6
 
-CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 / ES2015+](http://exploringjs.com/es6/ch_modules.html) format. The process isn't foolproof, but it can usually get you ~95% of the way there.
+CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 / ES2015 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) format. The process isn't foolproof, but it can usually get you ~95% of the way there.
 
 This tool uses [jscodeshift](https://github.com/facebook/jscodeshift) to run [5to6-codemod](https://github.com/5to6/5to6-codemod), [js-codemod](https://github.com/cpojer/js-codemod/) and [js-import-sort](https://github.com/Amwam/js-import-sort) under the hood. It's an opinionated migration to a format suitable for use in ES2015+ programs & scripts.
 
@@ -8,17 +8,8 @@ For extra safety, please consider using [standard](https://standardjs.com/) to s
 
 ## Install
 
-### Install it locally (without npm / yarn)
-
-```code
-git clone (this repo)
-(npm -g install / yarn global add) ./cjs-to-es6
-```
-
-### Install it from package
-
 ```bash
-(npm install / yarn add) -g cjs-to-es6
+npm i -g cjs-to-es6
 ```
 
 ## Usage
