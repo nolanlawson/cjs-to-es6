@@ -49,5 +49,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nolanlawson/cjs-to-es6.git"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
