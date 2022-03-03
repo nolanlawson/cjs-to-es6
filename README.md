@@ -2,9 +2,7 @@
 
 CLI to convert JavaScript files from [CommonJS](http://www.commonjs.org/) to [ES6 / ES2015 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) format. The process isn't foolproof, but it can usually get you ~95% of the way there.
 
-This tool uses [jscodeshift](https://github.com/facebook/jscodeshift) to run [5to6-codemod](https://github.com/5to6/5to6-codemod), [js-codemod](https://github.com/cpojer/js-codemod/) and [js-import-sort](https://github.com/Amwam/js-import-sort) under the hood. It's an opinionated migration to a format suitable for use in ES2015+ programs & scripts.
-
-For extra safety, please consider using [standard](https://standardjs.com/) to sanitize your code.
+This tool uses [jscodeshift](https://github.com/facebook/jscodeshift) to run [5to6-codemod](https://github.com/5to6/5to6-codemod) and [js-codemod](https://github.com/cpojer/js-codemod/) under the hood. It attempts to convert `require()` and `module.exports` / `exports` to `import` and `export`.
 
 ## Install
 
