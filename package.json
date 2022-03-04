@@ -1,6 +1,6 @@
 {
   "name": "cjs-to-es6",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Convert JavaScript files from CommonJS to ES6 modules",
   "license": "Apache-2.0",
   "main": "index.js",
